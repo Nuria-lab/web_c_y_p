@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+		<h1>Contacto</h1>		
+	</header>
+	<nav>
+		<ul>
+			<li><a href="miweb1.html">Inicio</a></li>
+			<li><a href="about.hmtl">Acerca de</a></li>
+			<li><a href="contact.html">Contacto</a></li>
+		</ul>
+	</nav>
+	<section>
+        <h2 id="nombre"></h2>
+        <p>Algo del quipo LF 04</p>
+    </section>
+	<div class="col-1 col-md-2">
+		<input type="file">
+    <img src="imagenes/IMG_20230203_131225.jpg"  width="500" height="600">
+	</div>
+	<footer>
+		<p>Derechos de autor © 2023, Nuria Torres</p>
+	</footer>
+</body>
+<script>
+	async function setData() {
+    const data = await fetch("./data.json");
+		console.log(data);
+		const listado = document.querySelector("#listado");
+		const json = await data.json();
+//agarrar la key que quiero mostrar
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const intern_id = urlParams.get("intern_id");
+    console.log(intern_id);
+    console.log(json[intern_id]);
+//elemento name_id
+    const title = document.querySelector("#nombre");
+    title.innerHTML= json[intern_id]["name_id"];
+  }
+
+  setData();
+</script>
+</html>

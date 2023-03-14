@@ -31,9 +31,9 @@
 		<section>
 			<h2>Info de equipos LF </h2>
 			<p>Este es el contenido de la columna 1.</p>
-			<ul>
-				<li><a href="LF04.html">LF04</a></li>
-				<li><a href="LF14.html">LF14</a></li>
+			<ul id="listado">
+				<!-- <li><a href="LF04.html">LF04</a></li>
+				<li><a href="LF14.html">LF14</a></li> -->
 			</ul>
 		</section>
 		<section>
@@ -46,4 +46,29 @@
 	</footer>
 
 </body>
+
+<script>
+	//HTTP GET data.json
+	async function getData() {
+		const data = await fetch("./data.json");
+		console.log(data);
+		const listado = document.querySelector("#listado");
+		const json = await data.json();
+		console.log(json);
+		const keys = Object.keys(json);
+		console.log(keys);
+
+		keys.forEach(key => {
+				console.log(key);
+				const aItem = document.createElement("a");
+				aItem.setAttribute("href", `maquina.html?intern_id=${key}`);
+				aItem.innerText = key;
+				const liItem = document.createElement("li");
+				liItem.append(aItem);
+				listado.append(liItem)
+
+		});
+	}
+	getData();
+</script>
 </html>
