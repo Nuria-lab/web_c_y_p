@@ -53,6 +53,9 @@
 
     const alcance = document.querySelector("#Alcance");
     alcance.innerHTML= json[intern_id]["alcance"]; 
+    if (alcance == 'TRUE') {
+      Alcance = "Alcanzado por normativa"
+    }
   }
 
   setData();
