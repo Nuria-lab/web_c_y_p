@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-		<h1>Contacto</h1>		
+		<h1>Info de </h1>		
 	</header>
 	<nav>
 		<ul>
@@ -19,12 +19,13 @@
 		</ul>
 	</nav>
 	<section>
-        <h2 id="nombre"></h2>
-        <p>Algo del quipo LF 04</p>
+        <img src="img.png"  width="50" >
+        Equipo:<h3 id="nombre"></h3>  
+        Marca:<h3 id="Marca"></h3> 
+        Alcance: <h3 id="Alcance"></h3>
     </section>
 	<div class="col-1 col-md-2">
-		<input type="file">
-    <img src="imagenes/IMG_20230203_131225.jpg"  width="500" height="600">
+    
 	</div>
 	<footer>
 		<p>Derechos de autor © 2023, Nuria Torres</p>
@@ -36,15 +37,22 @@
 		console.log(data);
 		const listado = document.querySelector("#listado");
 		const json = await data.json();
-//agarrar la key que quiero mostrar
+//agarrar la key que quiero mostrar (identificador)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const intern_id = urlParams.get("intern_id");
     console.log(intern_id);
     console.log(json[intern_id]);
-//elemento name_id
+//elemento name_id: con esto muestro las celdas que me interesan para cada valor de columna
     const title = document.querySelector("#nombre");
-    title.innerHTML= json[intern_id]["name_id"];
+    title.innerHTML= json[intern_id]["name_id"];                   //nombre del equipo
+
+    //title.innerHTML= json[intern_id]["Frecuencia de calibración"]; //en años, cada cuanto hay que calibrarlo
+    const marca = document.querySelector("#Marca");
+    marca.innerHTML= json[intern_id]["Marca"]; 
+
+    const alcance = document.querySelector("#Alcance");
+    alcance.innerHTML= json[intern_id]["alcance"]; 
   }
 
   setData();
